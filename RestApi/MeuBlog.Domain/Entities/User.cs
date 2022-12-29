@@ -6,6 +6,8 @@ namespace MeuBlog.Domain.Entities
 {
     public class User : Entity
     {        
+        public User() { }
+
         public Name Name { get; set; }
         public Email Email { get; set; }
         public string Password { get; set; }
