@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MeuBlog.Shared.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MeuBlog.RestApi.Controllers
 {
-    public class HomeController : Controller
+    [Route("/Home")]
+    public class HomeController : BaseController
     {
         [HttpGet]
         public IActionResult Index()
         {
-
-
             return Ok("Teste");
         }
     }

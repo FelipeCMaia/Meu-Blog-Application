@@ -1,25 +1,18 @@
+using MeuBlog.RestApi.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddApiConfiguration(builder.Configuration);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddJwtConfiguration(builder.Configuration);
+
+builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
+var env = builder.Environment;
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseApiConfiguration(env);
+app.UseSwaggerConfig();
 
 app.MapControllers();
-
 app.Run();
